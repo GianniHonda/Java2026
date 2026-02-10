@@ -12,16 +12,36 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		Products products = new Products();
 		System.out.println("Enter product data: ");
 		System.out.print("Name: ");
-		products.name = sc.nextLine();
+		String name = sc.nextLine();
 		System.out.print("Price: ");
-		products.price = sc.nextDouble();
-		System.out.println("Quantity in stock: ");
-		products.quantity = sc.nextInt();
+		double price = sc.nextDouble();
+		Products products = new Products(name, price);
 		
-		System.out.println(products.name + ", " + products.price + ", " + products.quantity);
+		products.setName("Computer");
+		System.out.println("Updated name: " + products.getName());
+		products.setPrice(1200.00);
+		System.out.println("Updated price: " + products.getPrice());
+		
+		System.out.println();
+		System.out.println("Product data: " + products);
+		
+		System.out.println();
+		System.out.println("Enter the number of products to be added in stock: ");
+		int quantity = sc.nextInt();
+		products.addProducts(quantity);
+		
+		System.out.println();
+		System.out.println("Updated data: " + products);
+		
+		System.out.println();
+		System.out.println("Enter the number of products to be removed from stock: ");
+		quantity = sc.nextInt();
+		products.removeProducts(quantity);
+		
+		System.out.println();
+		System.out.println("Updated data: " + products);
 		
 		sc.close();
 	}
